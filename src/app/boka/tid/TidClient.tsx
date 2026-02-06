@@ -20,7 +20,7 @@ export const TidClient = ({ listing }: { listing: ListingData }) => {
     <main className={`${tokens.page} min-h-screen px-4 pb-16 pt-24 md:px-8`}>
       <Topbar />
       <div className="mx-auto w-full max-w-4xl">
-        <GlassCard>
+        <GlassCard level="primary" className="p-7">
           <p className={tokens.text.eyebrow}>Tid</p>
           <h1 className={tokens.text.title}>Välj tid</h1>
           <p className={`${tokens.text.body} mt-2`}>{listing.address}</p>
@@ -38,7 +38,7 @@ export const TidClient = ({ listing }: { listing: ListingData }) => {
             >
               <GlassButton disabled={!selected}>Bekräfta med BankID</GlassButton>
             </Link>
-            <p className="text-sm text-slate-600">{selected?.label}</p>
+            <span className="text-xs text-slate-600">{selected?.label}</span>
           </div>
         </GlassCard>
       </div>

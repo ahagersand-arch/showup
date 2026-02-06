@@ -5,8 +5,9 @@ import { type ReactNode } from 'react';
 type Props = {
   children: ReactNode;
   className?: string;
+  level?: 'primary' | 'secondary' | 'utility';
 };
 
-export const GlassCard = ({ children, className }: Props) => {
-  return <section className={cn(tokens.glass, 'p-6 md:p-8', className)}>{children}</section>;
+export const GlassCard = ({ children, className, level = 'secondary' }: Props) => {
+  return <section className={cn(tokens.material[level], 'p-5 md:p-6', className)}>{children}</section>;
 };

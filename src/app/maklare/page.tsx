@@ -21,27 +21,24 @@ export default function MaklarePage() {
     <main className={`${tokens.page} min-h-screen px-4 pb-16 pt-24 md:px-8`}>
       <Topbar />
       <div className="mx-auto w-full max-w-6xl space-y-5">
-        <GlassCard>
+        <GlassCard level="primary" className="p-7">
           <h1 className={tokens.text.title}>Mäklarvy</h1>
-          <p className="mt-2 text-sm text-slate-700">
-            Behåll Anmäl intresse. ShowUp är ett extra spår för seriösa spekulanter.
-          </p>
-          <div className="mt-5">
+          <p className="mt-2 text-sm text-slate-700">Privata visningar för dagen.</p>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            {kpis.map((item) => (
+              <div key={item.label} className="space-y-1">
+                <p className="text-xs text-slate-600">{item.label}</p>
+                <p className="font-serif text-3xl text-slate-900">{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6">
             <GlassButton onClick={() => setOpen(true)}>Hur räknas detta?</GlassButton>
           </div>
         </GlassCard>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {kpis.map((item) => (
-            <GlassCard key={item.label} className="p-5">
-              <p className="text-sm text-slate-600">{item.label}</p>
-              <p className="mt-2 font-serif text-3xl text-slate-900">{item.value}</p>
-            </GlassCard>
-          ))}
-        </div>
-
-        <GlassCard>
-          <h2 className="font-serif text-2xl text-slate-900">Dagens bokningar</h2>
+        <GlassCard level="secondary" className="p-5">
+          <h2 className="font-serif text-2xl text-slate-900">Bokningar</h2>
           <div className="mt-4 overflow-hidden">
             <table className="w-full text-left text-sm text-slate-700">
               <thead>

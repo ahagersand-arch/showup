@@ -20,7 +20,7 @@ export const Topbar = () => {
         className={cn(
           'mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-3',
           tokens.motion.calm,
-          scrolled ? tokens.glass : 'bg-transparent border border-transparent rounded-3xl'
+          scrolled ? tokens.material.utility : 'bg-transparent border border-transparent rounded-3xl'
         )}
       >
         <Link href="/boka" className="font-serif text-xl text-slate-900">

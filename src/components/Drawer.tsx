@@ -1,7 +1,7 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { tokens } from '@/lib/tokens';
+import { cn } from '@/lib/utils';
 import { type ReactNode } from 'react';
 
 type Props = {
@@ -25,7 +25,7 @@ export const Drawer = ({ open, onClose, title, children }: Props) => {
       <aside
         className={cn(
           'fixed right-0 top-0 z-50 h-full w-full max-w-md p-6',
-          tokens.glass,
+          tokens.material.secondary,
           tokens.motion.calm,
           open ? 'translate-x-0' : 'translate-x-full'
         )}

@@ -40,7 +40,7 @@ export const BankIdClient = ({ listing }: { listing: ListingData }) => {
     <main className={`${tokens.page} min-h-screen px-4 pb-16 pt-24 md:px-8`}>
       <Topbar />
       <div className="mx-auto w-full max-w-3xl">
-        <GlassCard>
+        <GlassCard level="primary" className="p-7">
           <p className={tokens.text.eyebrow}>BankID</p>
           <h1 className={tokens.text.title}>Bekräfta bokning</h1>
           <div className="mt-5 space-y-1 text-sm text-slate-700">

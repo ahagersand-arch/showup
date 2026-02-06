@@ -20,8 +20,8 @@ export const KlartClient = ({ listing }: { listing: ListingData }) => {
   return (
     <main className={`${tokens.page} min-h-screen px-4 pb-16 pt-24 md:px-8`}>
       <Topbar />
-      <div className="mx-auto w-full max-w-3xl">
-        <GlassCard>
+      <div className="mx-auto w-full max-w-2xl">
+        <GlassCard level="secondary" className="p-6">
           <p className={tokens.text.eyebrow}>Klart</p>
           <h1 className={tokens.text.title}>Din visning är bokad</h1>
           <div className="mt-5 space-y-2 text-sm text-slate-700">
