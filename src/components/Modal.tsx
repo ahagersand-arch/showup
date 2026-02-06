@@ -1,7 +1,7 @@
 'use client';
 
-import { tokens } from '@/lib/tokens';
 import { cn } from '@/lib/utils';
+import { tokens } from '@/lib/tokens';
 import { type ReactNode } from 'react';
 
 type Props = {
@@ -21,9 +21,26 @@ export const Modal = ({ open, title, onClose, children }: Props) => {
       )}
     >
       <div className="absolute inset-0 bg-slate-900/18" onClick={onClose} />
-      <div className={cn(tokens.material.secondary, 'relative w-full max-w-md p-5', open ? 'translate-y-0' : 'translate-y-1')}>
-        <h3 className="font-serif text-2xl text-slate-900">{title}</h3>
-        <div className="mt-3 text-sm text-slate-700">{children}</div>
+
+      <div
+        className={cn(
+          'relative w-full max-w-lg p-6',
+          tokens.material.secondary,
+          tokens.motion.calm,
+          open ? 'translate-y-0' : 'translate-y-2'
+        )}
+      >
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="font-serif text-2xl text-slate-900">{title}</h3>
+          <button
+            onClick={onClose}
+            className="rounded-full px-3 py-1 text-sm text-slate-700 hover:bg-white/20"
+          >
+            Stäng
+          </button>
+        </div>
+
+        <div className="mt-4 text-sm text-slate-700">{children}</div>
       </div>
     </div>
   );

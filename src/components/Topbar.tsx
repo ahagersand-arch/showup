@@ -9,8 +9,9 @@ export const Topbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -26,11 +27,12 @@ export const Topbar = () => {
         <Link href="/boka" className="font-serif text-xl text-slate-900">
           ShowUp
         </Link>
-        <nav className="flex items-center gap-4 text-sm text-slate-700">
-          <Link href="/maklare" className="hover:text-slate-900">
+
+        <nav className="flex items-center gap-3 text-sm text-slate-700">
+          <Link href="/maklare" className="transition-colors hover:text-slate-900">
             Mäklarvy
           </Link>
-          <Link href="/integrera" className="hover:text-slate-900">
+          <Link href="/integrera" className="transition-colors hover:text-slate-900">
             Integrera
           </Link>
         </nav>

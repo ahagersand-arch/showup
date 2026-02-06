@@ -17,19 +17,29 @@ export const KlartClient = ({ listing }: { listing: ListingData }) => {
     return () => clearDraft();
   }, [clearDraft]);
 
+  const query = listingToQuery(listing);
+
   return (
     <main className={`${tokens.page} min-h-screen px-4 pb-16 pt-24 md:px-8`}>
       <Topbar />
-      <div className="mx-auto w-full max-w-2xl">
-        <GlassCard level="secondary" className="p-6">
-          <p className={tokens.text.eyebrow}>Klart</p>
-          <h1 className={tokens.text.title}>Din visning är bokad</h1>
-          <div className="mt-5 space-y-2 text-sm text-slate-700">
-            <p>{draft.slotLabel ?? 'Ons 18 sep • 18:00'}</p>
-            <p>{listing.address}</p>
+
+      <div className="mx-auto w-full max-w-3xl">
+        <GlassCard level="primary" className="p-7">
+          <p className={tokens.text.eyebrow}>Bokning bekräftad</p>
+          <h1 className={tokens.text.title}>Din privata visning är bokad</h1>
+
+          <div className="mt-6 space-y-2 text-sm text-slate-700">
+            <p>Tid: {draft.slotLabel ?? 'Ons 18 sep • 18:00'}</p>
+            <p>Adress: {listing.address}</p>
+            <p>Mäklare: {listing.agent}</p>
+            <p>Byrå: {listing.agency}</p>
           </div>
-          <div className="mt-7">
-            <Link href={`/avboka?token=demo123&${listingToQuery(listing)}`}>
+
+          <div className="mt-7 flex flex-wrap gap-3">
+            <GlassButton variant="ghost">Lägg till i kalender (demo)</GlassButton>
+            <GlassButton variant="ghost">Skicka SMS-kopia (demo)</GlassButton>
+
+            <Link href={`/avboka?token=demo123&${query}`}>
               <GlassButton>Avboka tid</GlassButton>
             </Link>
           </div>

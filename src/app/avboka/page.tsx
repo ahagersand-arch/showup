@@ -17,14 +17,20 @@ export default function AvbokaPage() {
       <Topbar />
       <div className="mx-auto w-full max-w-2xl">
         <GlassCard>
-          <h1 className={tokens.text.title}>Avboka visning</h1>
-          <p className="mt-3 text-sm text-slate-700">Referens: {token}</p>
+          <h1 className={tokens.text.title}>Avboka privat visning</h1>
+          <p className="mt-3 text-sm text-slate-700">Token: {token}</p>
+          <p className="mt-1 text-sm text-slate-600">
+            Demo-läge: avbokningen registreras lokalt och visar bekräftelse direkt.
+          </p>
+
           <div className="mt-6">
             <GlassButton onClick={() => setDone(true)}>Bekräfta avbokning</GlassButton>
           </div>
         </GlassCard>
       </div>
-      <Toast show={done} message="Visningen är avbokad." />
+
+      <Toast show={done} message="Bokningen är avbokad (demo)." />
     </main>
   );
 }
+

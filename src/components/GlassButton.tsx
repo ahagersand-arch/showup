@@ -1,17 +1,26 @@
-import { tokens } from '@/lib/tokens';
 import { cn } from '@/lib/utils';
+import { tokens } from '@/lib/tokens';
 import { type ButtonHTMLAttributes } from 'react';
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement>;
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: 'primary' | 'ghost';
+};
 
-export const GlassButton = ({ className, children, ...props }: Props) => {
+export const GlassButton = ({
+  className,
+  variant = 'primary',
+  children,
+  ...props
+}: Props) => {
   return (
     <button
       className={cn(
-        tokens.material.utility,
+        'inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold tracking-wide',
         tokens.motion.calm,
-        'inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-slate-900',
-        'hover:bg-white/32 disabled:cursor-not-allowed disabled:opacity-60',
+        variant === 'primary'
+          ? 'bg-slate-900 text-white hover:bg-slate-800'
+          : cn(tokens.material.utility, 'border border-white/45 text-slate-900 hover:bg-white/30'),
+        'disabled:opacity-55 disabled:cursor-not-allowed',
         className
       )}
       {...props}
