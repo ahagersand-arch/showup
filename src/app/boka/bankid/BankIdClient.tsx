@@ -41,8 +41,8 @@ export const BankIdClient = ({ listing }: { listing: ListingData }) => {
       <Topbar />
       <div className="mx-auto w-full max-w-3xl">
         <GlassCard>
-          <p className={tokens.text.eyebrow}>Bekräftelse</p>
-          <h1 className={tokens.text.title}>BankID</h1>
+          <p className={tokens.text.eyebrow}>BankID</p>
+          <h1 className={tokens.text.title}>Bekräfta bokning</h1>
           <div className="mt-5 space-y-1 text-sm text-slate-700">
             <p>{listing.address}</p>
             <p>{draft.slotLabel ?? 'Tid ej vald'}</p>
@@ -57,16 +57,16 @@ export const BankIdClient = ({ listing }: { listing: ListingData }) => {
               Starta BankID
             </GlassButton>
             <Link href={`/boka/tid?${query}`}>
-              <GlassButton emphasis="low">Byt tid</GlassButton>
+              <GlassButton>Byt tid</GlassButton>
             </Link>
           </div>
         </GlassCard>
       </div>
 
       <Modal open={open} onClose={() => setOpen(false)} title="Signering">
-        <p>{step === 'starting' && 'Ansluter…'}</p>
-        <p>{step === 'signing' && 'Väntar på signering…'}</p>
-        <p>{step === 'done' && 'Klart.'}</p>
+        <p>{step === 'starting' && 'Ansluter'}</p>
+        <p>{step === 'signing' && 'Väntar på signering'}</p>
+        <p>{step === 'done' && 'Klart'}</p>
       </Modal>
       <Toast show={step === 'signing'} message="BankID väntar på signering" />
     </main>

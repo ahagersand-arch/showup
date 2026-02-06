@@ -38,7 +38,7 @@ export const TidClient = ({ listing }: { listing: ListingData }) => {
             >
               <GlassButton disabled={!selected}>Bekräfta med BankID</GlassButton>
             </Link>
-            <p className={tokens.text.quiet}>{selected?.label}</p>
+            <p className="text-sm text-slate-600">{selected?.label}</p>
           </div>
         </GlassCard>
       </div>

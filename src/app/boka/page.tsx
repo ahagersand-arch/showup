@@ -21,11 +21,10 @@ export default function BokaPage({ searchParams }: Props) {
       <Hero src={listing.heroImage} alt={listing.address}>
         <GlassCard className="max-w-2xl">
           <p className={tokens.text.eyebrow}>Privat visning • {listing.objectId}</p>
-          <h1 className="mt-4 font-serif text-4xl text-slate-900 md:text-5xl">Boka privat visning</h1>
-          <p className="mt-3 text-base text-slate-700">
-            {listing.address}. Välj tid och bekräfta med BankID.
-          </p>
-          <p className="mt-2 text-sm text-slate-600">
+          <h1 className="mt-4 font-serif text-4xl text-slate-900 md:text-5xl">
+            {listing.address}. Boka privat visning.
+          </h1>
+          <p className="mt-3 text-sm text-slate-700">
             {listing.agent}, {listing.agency}
           </p>
           <div className="mt-8 flex items-center gap-3">

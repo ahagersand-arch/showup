@@ -27,9 +27,7 @@ export default function MaklarePage() {
             Behåll Anmäl intresse. ShowUp är ett extra spår för seriösa spekulanter.
           </p>
           <div className="mt-5">
-            <GlassButton emphasis="low" onClick={() => setOpen(true)}>
-              Hur räknas detta?
-            </GlassButton>
+            <GlassButton onClick={() => setOpen(true)}>Hur räknas detta?</GlassButton>
           </div>
         </GlassCard>
 
@@ -44,7 +42,7 @@ export default function MaklarePage() {
 
         <GlassCard>
           <h2 className="font-serif text-2xl text-slate-900">Dagens bokningar</h2>
-          <div className="mt-4 overflow-hidden rounded-2xl">
+          <div className="mt-4 overflow-hidden">
             <table className="w-full text-left text-sm text-slate-700">
               <thead>
                 <tr className="border-b border-white/45">

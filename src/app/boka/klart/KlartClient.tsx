@@ -27,9 +27,6 @@ export const KlartClient = ({ listing }: { listing: ListingData }) => {
           <div className="mt-5 space-y-2 text-sm text-slate-700">
             <p>{draft.slotLabel ?? 'Ons 18 sep • 18:00'}</p>
             <p>{listing.address}</p>
-            <p>
-              {listing.agent}, {listing.agency}
-            </p>
           </div>
           <div className="mt-7">
             <Link href={`/avboka?token=demo123&${listingToQuery(listing)}`}>

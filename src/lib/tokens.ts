@@ -4,10 +4,9 @@ export const tokens = {
   glass:
     'backdrop-blur-2xl bg-white/36 border border-white/50 shadow-[0_18px_55px_rgba(66,88,124,0.18)] rounded-3xl',
   text: {
-    eyebrow: 'text-xs tracking-[0.16em] uppercase text-slate-600',
+    eyebrow: 'text-xs uppercase tracking-[0.14em] text-slate-600',
     title: 'font-serif text-3xl md:text-4xl text-slate-900',
-    body: 'text-base text-slate-700',
-    quiet: 'text-sm text-slate-600'
+    body: 'text-sm text-slate-700'
   },
   motion: {
     calm: 'transition-all duration-200 ease-out'
