@@ -1,7 +1,8 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { type ReactNode } from 'react';
+import { cn } from '@/lib/utils';
+import { tokens } from '@/lib/tokens';
 
 type Props = {
   open: boolean;
@@ -15,24 +16,32 @@ export const Drawer = ({ open, onClose, title, children }: Props) => {
     <>
       <div
         className={cn(
-          'fixed inset-0 z-40 bg-slate-900/20 transition-opacity duration-300',
+          'fixed inset-0 z-40 bg-slate-900/18',
+          tokens.motion.calm,
           open ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
         onClick={onClose}
       />
+
       <aside
         className={cn(
-          'fixed right-0 top-0 z-50 h-full w-full max-w-md border-l border-white/50 bg-white/50 p-6 backdrop-blur-2xl transition-transform duration-300',
+          'fixed right-0 top-0 z-50 h-full w-full max-w-md p-6',
+          tokens.material.secondary,
+          tokens.motion.calm,
           open ? 'translate-x-0' : 'translate-x-full'
         )}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-3">
           <h3 className="font-serif text-2xl text-slate-900">{title}</h3>
-          <button onClick={onClose} className="rounded-full bg-white/45 px-3 py-1 text-slate-700">
+          <button
+            onClick={onClose}
+            className="rounded-full px-3 py-1 text-sm text-slate-700 hover:bg-white/20"
+          >
             Stäng
           </button>
         </div>
-        <div className="mt-6 space-y-4 text-slate-700">{children}</div>
+
+        <div className="mt-5 space-y-3 text-sm text-slate-700">{children}</div>
       </aside>
     </>
   );

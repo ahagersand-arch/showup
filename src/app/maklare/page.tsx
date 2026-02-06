@@ -6,58 +6,59 @@ import { GlassButton } from '@/components/GlassButton';
 import { GlassCard } from '@/components/GlassCard';
 import { Topbar } from '@/components/Topbar';
 import { bookingRows } from '@/lib/mock';
+import { tokens } from '@/lib/tokens';
 
 const kpis = [
-  { label: 'Privata bokningar', value: '38', trend: '+16%' },
-  { label: 'No-show minskat', value: '-29%', trend: 'senaste 30 dagarna' },
-  { label: 'Verifierade med BankID', value: '97%', trend: 'hög kvalitet' }
+  { label: 'Idag (privata visningar)', value: '3' },
+  { label: 'Kommande (7 dagar)', value: '12' },
+  { label: 'Verifierade med BankID', value: '97%' },
 ];
 
 export default function MaklarePage() {
   const [open, setOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_14%_12%,#f9fcff,#dce8f8)] px-4 pb-16 pt-24 md:px-8">
+    <main className={`${tokens.page} min-h-screen px-4 pb-16 pt-24 md:px-8`}>
       <Topbar />
-      <div className="mx-auto w-full max-w-6xl space-y-6">
-        <GlassCard strong>
-          <h1 className="font-serif text-4xl text-slate-900">Mäklarvy</h1>
-          <p className="mt-2 text-slate-700">
-            Behåll Anmäl intresse. ShowUp är ett extra spår för de mest seriösa spekulanterna.
-          </p>
-          <div className="mt-5 flex flex-wrap items-center gap-3">
-            <GlassButton onClick={() => setOpen(true)} variant="ghost">
+
+      <div className="mx-auto w-full max-w-6xl space-y-5">
+        <GlassCard level="primary" className="p-7">
+          <h1 className={tokens.text.title}>Mäklarvy</h1>
+          <p className="mt-2 text-sm text-slate-700">Överblick för idag och kommande bokningar.</p>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {kpis.map((item) => (
+              <div key={item.label} className="space-y-1">
+                <p className="text-xs text-slate-600">{item.label}</p>
+                <p className="font-serif text-3xl text-slate-900">{item.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6">
+            <GlassButton variant="ghost" onClick={() => setOpen(true)}>
               Hur räknas detta?
             </GlassButton>
           </div>
         </GlassCard>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {kpis.map((kpi) => (
-            <GlassCard key={kpi.label} className="p-5">
-              <p className="text-sm text-slate-600">{kpi.label}</p>
-              <p className="mt-2 font-serif text-4xl text-slate-900">{kpi.value}</p>
-              <p className="mt-1 text-sm text-slate-700">{kpi.trend}</p>
-            </GlassCard>
-          ))}
-        </div>
+        <GlassCard level="secondary" className="p-5">
+          <h2 className="font-serif text-2xl text-slate-900">Bokningar</h2>
 
-        <GlassCard>
-          <h2 className="font-serif text-2xl text-slate-900">Senaste bokningar</h2>
-          <div className="mt-4 overflow-hidden rounded-2xl border border-white/55 bg-white/42">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-white/35 text-slate-700">
-                <tr>
-                  <th className="px-4 py-3">ID</th>
-                  <th className="px-4 py-3">Kund</th>
-                  <th className="px-4 py-3">Tid</th>
-                  <th className="px-4 py-3">Adress</th>
-                  <th className="px-4 py-3">Status</th>
+          <div className="mt-4 overflow-hidden rounded-2xl border border-white/45 bg-white/35">
+            <table className="w-full text-left text-sm text-slate-700">
+              <thead className="bg-white/25">
+                <tr className="border-b border-white/45">
+                  <th className="px-4 py-3 font-medium">ID</th>
+                  <th className="px-4 py-3 font-medium">Kund</th>
+                  <th className="px-4 py-3 font-medium">Tid</th>
+                  <th className="px-4 py-3 font-medium">Adress</th>
+                  <th className="px-4 py-3 font-medium">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {bookingRows.map((row) => (
-                  <tr key={row.id} className="border-t border-white/40 text-slate-700">
+                  <tr key={row.id} className="border-t border-white/35">
                     <td className="px-4 py-3">{row.id}</td>
                     <td className="px-4 py-3">{row.customer}</td>
                     <td className="px-4 py-3">{row.slot}</td>
@@ -73,11 +74,10 @@ export default function MaklarePage() {
 
       <Drawer open={open} onClose={() => setOpen(false)} title="Hur räknas detta?">
         <p>
-          KPI:er baseras på verifierade bokningar där spekulanten fullfört BankID-flödet och närvarat eller avbokat i tid.
+          KPI:er baseras på bokningar där spekulanten valt tid och fullföljt BankID. Avbokningar räknas som “i tid” fram
+          till villkorsgränsen.
         </p>
-        <p>
-          No-show jämförs mot perioden innan ShowUp aktiverades på samma område och objektkategori.
-        </p>
+        <p>Syftet är överblick och kontroll — inte analytics.</p>
       </Drawer>
     </main>
   );
